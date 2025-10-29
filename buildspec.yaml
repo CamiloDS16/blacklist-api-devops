@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - echo "==> Instalando dependencias de Python..."
+      - pip install --upgrade pip
+      - pip install -r requirements.txt
+
+  pre_build:
+    commands:
+      - echo "==> Pre-build: verificando archivos requeridos"
+      - test -f application.py && echo "application.py encontrado"
+      - test -f Procfile && echo "Procfile encontrado"
+      - test -f requirements.txt && echo "requirements.txt encontrado"
+
+  build:
+    commands:
+      - echo "==> Empaquetando aplicación para Elastic Beanstalk..."
+      # se crea el ZIP que Beanstalk espera
+      - zip -r application.zip . -x "*.git*" "*.venv*" "*__pycache__*"
+
+artifacts:
+  files:
+    - application.zip
