@@ -18,7 +18,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Running tests...
-      - python -m unittest discover || echo "No tests found"
+      - python -m pytest
 
   post_build:
     commands:
