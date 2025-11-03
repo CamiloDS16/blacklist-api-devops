@@ -14,6 +14,7 @@ DATABASE_HOST = os.getenv("DATABASE_HOST", "localhost")
 DATABASE_PORT = os.getenv("DATABASE_PORT", "5432")
 DATABASE_NAME = os.getenv("DATABASE_NAME", "blacklist_db")
 
+#fake comment
 if FLASK_ENV in ["local", "tests"]:
     DATABASE_URL = "sqlite:///emails.db"
     logger.info(f"Using SQLite database (FLASK_ENV={FLASK_ENV})")
